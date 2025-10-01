@@ -8,6 +8,7 @@ export const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="text-center text-muted-foreground">
           <p className="mb-2">© 2025 Nuclear Power Plants Information</p>
+          <p className="text-sm">{t("footer_text_c")}</p>
           <p className="text-sm">{t("footer_text")}</p>
         </div>
       </div>

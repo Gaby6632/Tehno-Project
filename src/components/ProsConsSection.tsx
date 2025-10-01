@@ -43,7 +43,7 @@ export const ProsConsSection = () => {
             <Card className="p-8 h-full bg-advantage/10 border-advantage/30">
               <h3 className="text-2xl font-bold mb-6 flex items-center gap-2 text-advantage-foreground">
                 <CheckCircle2 className="w-8 h-8 text-advantage" />
-                {t("advantages")}
+                <div className="text-foreground white">{t("advantages")}</div>
               </h3>
               <ul className="space-y-4">
                 {advantages.map((advantage, index) => (

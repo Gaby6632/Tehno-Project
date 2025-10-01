@@ -17,7 +17,7 @@ const translations = {
     hero_title: "Nuclear Energy",
     hero_subtitle: "The Future of Clean Power Generation",
     about_title: "About Nuclear Power",
-    about_desc: "Nuclear power plants generate electricity through nuclear fission, where uranium atoms are split to release enormous amounts of energy. This process produces heat that converts water into steam, which drives turbines to generate electricity. Nuclear power is one of the most efficient and reliable energy sources, capable of providing baseload power 24/7 with minimal carbon emissions.",
+    about_desc: "Nuclear power plants generate electricity through a process called nuclear fission. Inside the reactor, uranium atoms are split apart, releasing a huge amount of energy in the form of heat. This heat is used to convert water into high-pressure steam, which is directed toward turbines. As the turbines spin, they drive generators that produce electricity. One of the main advantages of nuclear energy is its ability to provide a stable supply of power 24/7, regardless of weather conditions. Additionally, nuclear energy produces very low carbon emissions, making it a cleaner alternative compared to coal or gas power plants.",
     advantages: "Advantages",
     disadvantages: "Disadvantages",
     adv1: "Low carbon emissions",
@@ -53,6 +53,7 @@ const translations = {
     contributor_2_task_2: "Image Asset Collection",
     contributor_2_task_3: "AI Assistant Integration",
     contributor_2_task_4: "Testing & Quality Assurance",
+    footer_text_c: "Developed by Gabi and a lot"
   },
   ro: {
     home: "Acasă",
@@ -62,7 +63,7 @@ const translations = {
     hero_title: "Energie Nucleară",
     hero_subtitle: "Viitorul Generării de Energie Curată",
     about_title: "Despre Energia Nucleară",
-    about_desc: "Centralele nucleare generează electricitate prin fisiune nucleară, unde atomii de uraniu sunt divizați pentru a elibera cantități uriașe de energie. Acest proces produce căldură care transformă apa în abur, care acționează turbinele pentru a genera electricitate. Energia nucleară este una dintre cele mai eficiente și fiabile surse de energie, capabilă să furnizeze energie de bază 24/7 cu emisii minime de carbon.",
+    about_desc: "Centralele nucleare produc energie electrică printr-un proces numit fisiune nucleară. În interiorul reactorului, atomii de uraniu sunt divizați, iar acest lucru eliberează o cantitate uriașă de energie sub formă de căldură. Căldura încălzește apa, transformând-o în abur sub presiune. Aburul este apoi direcționat către turbine, care încep să se învârtă și să genereze electricitate prin intermediul generatoarelor. Un avantaj major al energiei nucleare este că poate furniza energie constantă, zi și noapte, indiferent de condițiile meteo. În plus, emisiile de carbon sunt foarte reduse, ceea ce face ca energia nucleară să fie o alternativă mult mai curată comparativ cu centralele pe bază de cărbune sau gaz.",
     advantages: "Avantaje",
     disadvantages: "Dezavantaje",
     adv1: "Emisii reduse de carbon",
@@ -98,6 +99,7 @@ const translations = {
     contributor_2_task_2: "Colectare Imagini",
     contributor_2_task_3: "Integrare Asistent AI",
     contributor_2_task_4: "Testare & Asigurare Calitate",
+    footer_text_c: "Dezvoltat de Gabi și multa cafea."
   },
 };
 
