@@ -14,30 +14,14 @@ export const AboutSection = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl font-bold mb-8 text-center glow-text">
+          <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center glow-text">
             {t("about_title")}
           </h2>
-          <Card className="p-8 bg-card border-primary/20">
-            <p className="text-lg leading-relaxed text-foreground">
+          <Card className="p-4 md:p-8 bg-card border-primary/20">
+            <p className="text-center md:text-lg leading-relaxed text-foreground">
               {t("about_desc")}
             </p>
           </Card>
-          <Card></Card>
-        </motion.div>
-      </div>
-      <div className="container mx-auto max-w-4xl">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <h2 className="text-4xl font-bold mb-8 text-center glow-text">
-          </h2>
-          <Card className="p-8 bg-card border-primary/20">
-            <img className="w-full h-auto rounded" src="src/assets/powerplancomp.png" alt="Power Plant Model" />
-          </Card>
-          <Card></Card>
         </motion.div>
       </div>
     </section>

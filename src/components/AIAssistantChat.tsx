@@ -1,8 +1,9 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Send, Loader2 } from "lucide-react";
+import { X, Send, Loader2, Copy, Volume2, Check } from "lucide-react";
 import { Button } from "./ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useToast } from "@/hooks/use-toast";
 
 interface Message {
   role: "user" | "assistant";
@@ -16,9 +17,12 @@ interface AIAssistantChatProps {
 
 export const AIAssistantChat = ({ isOpen, onClose }: AIAssistantChatProps) => {
   const { t } = useLanguage();
+  const { toast } = useToast();
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
+  const [speakingIndex, setSpeakingIndex] = useState<number | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -93,6 +97,36 @@ export const AIAssistantChat = ({ isOpen, onClose }: AIAssistantChatProps) => {
     }
   };
 
+  const copyToClipboard = (text: string, index: number) => {
+    navigator.clipboard.writeText(text);
+    setCopiedIndex(index);
+    toast({
+      description: "Copied to clipboard!",
+    });
+    setTimeout(() => setCopiedIndex(null), 2000);
+  };
+
+  const readAloud = (text: string, index: number) => {
+    if ('speechSynthesis' in window) {
+      if (speakingIndex === index && window.speechSynthesis.speaking) {
+        window.speechSynthesis.cancel();
+        setSpeakingIndex(null);
+      } else {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.rate = 0.9;
+        utterance.onend = () => setSpeakingIndex(null);
+        window.speechSynthesis.speak(utterance);
+        setSpeakingIndex(index);
+      }
+    } else {
+      toast({
+        description: "Text-to-speech not supported in your browser",
+        variant: "destructive",
+      });
+    }
+  };
+
   return (
     <AnimatePresence>
       {isOpen && (
@@ -100,7 +134,7 @@ export const AIAssistantChat = ({ isOpen, onClose }: AIAssistantChatProps) => {
           initial={{ opacity: 0, y: 20, scale: 0.95 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 20, scale: 0.95 }}
-          className="fixed bottom-24 right-6 w-96 h-[500px] bg-card border border-border rounded-lg shadow-2xl flex flex-col z-50"
+          className="fixed bottom-20 md:bottom-24 right-2 md:right-6 w-[95vw] md:w-96 h-[70vh] md:h-[500px] bg-card border border-border rounded-lg shadow-2xl flex flex-col z-[100]"
         >
           <div className="flex items-center justify-between p-4 border-b border-border bg-primary/10 rounded-t-lg">
             <h3 className="font-semibold text-primary">🔬 Power Plant Expert AI</h3>
@@ -121,22 +155,50 @@ export const AIAssistantChat = ({ isOpen, onClose }: AIAssistantChatProps) => {
                 key={index}
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}
+                className="space-y-2"
               >
-                <div
-                  className={`max-w-[80%] p-3 rounded-lg ${
-                    message.role === "user"
-                      ? "bg-primary text-primary-foreground"
-                      : "bg-muted text-foreground"
-                  }`}
-                >
-                  {message.content}
+                <div className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}>
+                  <div
+                    className={`max-w-[85%] p-3 rounded-2xl ${
+                      message.role === "user"
+                        ? "bg-primary text-primary-foreground rounded-br-sm"
+                        : "bg-muted text-foreground rounded-bl-sm"
+                    }`}
+                  >
+                    <p className="text-sm md:text-base whitespace-pre-wrap break-words">{message.content}</p>
+                  </div>
                 </div>
+                {message.role === "assistant" && (
+                  <div className="flex items-center gap-2 ml-2">
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => copyToClipboard(message.content, index)}
+                      className="h-8 px-2 text-xs"
+                    >
+                      {copiedIndex === index ? (
+                        <Check className="h-3 w-3 mr-1" />
+                      ) : (
+                        <Copy className="h-3 w-3 mr-1" />
+                      )}
+                      Copy
+                    </Button>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => readAloud(message.content, index)}
+                      className="h-8 px-2 text-xs"
+                    >
+                      <Volume2 className="h-3 w-3 mr-1" />
+                      {speakingIndex === index ? "Stop" : "Read aloud"}
+                    </Button>
+                  </div>
+                )}
               </motion.div>
             ))}
             {isLoading && (
               <div className="flex justify-start">
-                <div className="bg-muted p-3 rounded-lg">
+                <div className="bg-muted p-3 rounded-2xl rounded-bl-sm">
                   <Loader2 className="h-4 w-4 animate-spin" />
                 </div>
               </div>

@@ -28,7 +28,7 @@ export const ProsConsSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-4xl font-bold mb-12 text-center glow-text"
+          className="text-3xl md:text-4xl font-bold mb-12 text-center glow-text"
         >
           {t("pros_cons")}
         </motion.h2>
@@ -40,10 +40,10 @@ export const ProsConsSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <Card className="p-8 h-full bg-advantage/10 border-advantage/30">
-              <h3 className="text-2xl font-bold mb-6 flex items-center gap-2 text-advantage-foreground">
+            <Card className="p-4 md:p-8 h-full bg-advantage/10 border-advantage/30">
+              <h3 className="text-xl md:text-2xl font-bold mb-6 flex items-center gap-2 text-advantage-foreground">
                 <CheckCircle2 className="w-8 h-8 text-advantage" />
-                <div className="text-foreground white">{t("advantages")}</div>
+                {t("advantages")}
               </h3>
               <ul className="space-y-4">
                 {advantages.map((advantage, index) => (
@@ -69,8 +69,8 @@ export const ProsConsSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <Card className="p-8 h-full bg-disadvantage/10 border-disadvantage/30">
-              <h3 className="text-2xl font-bold mb-6 flex items-center gap-2">
+            <Card className="p-4 md:p-8 h-full bg-disadvantage/10 border-disadvantage/30">
+              <h3 className="text-xl md:text-2xl font-bold mb-6 flex items-center gap-2">
                 <XCircle className="w-8 h-8 text-disadvantage" />
                 {t("disadvantages")}
               </h3>

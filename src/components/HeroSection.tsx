@@ -14,8 +14,8 @@ export const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="text-center mb-8"
         >
-          <h1 className="text-6xl font-bold mb-4 glow-text">{t("hero_title")}</h1>
-          <p className="text-xl text-muted-foreground">{t("hero_subtitle")}</p>
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 glow-text">{t("hero_title")}</h1>
+          <p className="text-base md:text-xl text-muted-foreground px-4">{t("hero_subtitle")}</p>
         </motion.div>
 
         <motion.div
