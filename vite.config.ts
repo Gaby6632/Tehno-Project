@@ -6,11 +6,11 @@ export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
     port: 8080,
-    allowedHosts: ["classtime8b.onrender.com"],
+    allowedHosts: ["tehno-project.onrender.com"],
   },
   preview: {
     port: 8080,
-    allowedHosts: ["classtime8b.onrender.com"],
+    allowedHosts: ["tehno-project.onrender.com"],
   },
   plugins: [react()],
   resolve: {
