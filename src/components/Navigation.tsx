@@ -34,7 +34,6 @@ export const Navigation = () => {
     >
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-full bg-primary glow-border" />
           <span className="font-bold text-base md:text-lg glow-text truncate max-w-[150px] md:max-w-none">{t("hero_title")}</span>
         </div>
 
